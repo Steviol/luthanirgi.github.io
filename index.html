@@ -50,7 +50,6 @@
 		
 		<!-- Logo --> 
         <a class="logo ml-md-3" href="index.html" title="iDocs Template"> <img src="assets/images/logo.png" alt="iDocs Template"/> </a> 
-		<span class="text-2 ml-2">v1.0</span> 
         <!-- Logo End -->
         
 		<!-- Navbar Toggler -->
@@ -156,7 +155,7 @@
         <!-- Installation
 		============================ -->
         <section id="idocs_installation">
-          <h2>Installation</h2>
+          <h2>SleepOrSex - Installation</h2>
           <h2><strong>This script need bed as an props! Ask your modder how to do it!!!</strong></h2>
           <p class="lead">Follow the steps below to setup your script:</p>
           <ol>
@@ -168,7 +167,7 @@
                 <li><a href="https://github.com/brouznouf/fivem-mysql-async">mysql-async</a> or <a href="https://github.com/overextended/oxmysql">oxmysql</a>
                 <li><code>Skin Script</code> - like esx_skin or fivem-appearance
                 <li><code>Target Script</code> - like ox_target or qb-target (Optional if you want better performance)
-                <li><code>Artifact 6116</code> - <a href="https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/">Take a look here</a>
+                <li><code>Artifact Server 6116</code> - Minimum version is 6116, so you can running artifact above this version. <a href="https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/">Take a look here</a> 
                 <!--
                 <li><code>HTML/index.html</code> - Homepage
                   <ul>
@@ -216,8 +215,305 @@
         <section id="idocs_sass">
           <h2>Common Errors</h2>
           <ol>
+            <li><strong>I didn't use any target, is that possible?</strong>
+              <br>Yeah its possible, Make sure you have change this value <code>Config.NameTarget = 'qtarget'</code> to <code>Config.NameTarget = false</code> in config.lua
+            </li>
+            <li><strong>I'm using qb-target, how to do that'</strong>
+              <br>Make sure you have change this value <code>Config.NameTarget = 'qtarget'</code> to <code>Config.NameTarget = 'qb-target'</code> in config.lua
+            </li>
+            <li><strong>I want to add more sleep animation, how to do it?</strong>
+              <br>Take a look example that i give, and dont forget the index!
+              <pre>
+                <code>Config.AnimationSleep = {
+  [1] = {
+      label = 'Sleep 1',
+      description = 'This is Decription',
+      dict = 'timetable@tracy@sleep@',
+      name = 'idle_c',
+  },
+  [2] = {
+      label = 'Your_Name_Sleep',
+      description = 'Your_Description_Sleep',
+      dict = 'Your_AnimDictionary_Sleep',
+      name = 'Your_AnimName_Sleep',
+  },
+  [3] = {
+    label = 'Your_Name_Sleep',
+    description = 'Your_Description_Sleep',
+    dict = 'Your_AnimDictionary_Sleep',
+    name = 'Your_AnimName_Sleep',
+  },
+}</code>
+              </pre>
+            </li>
+            <li><strong>I want to add more sex animation, how to do it?</strong>
+              <br><a href="https://docs.fivem.net/natives/?_0x6B9BBD38AB0796DF">Read how this native work</a> and Take a look example that i give, and dont forget the index!
+              <br>
+              <br>Notes: 
+              <ul>
+                <li>Take a look for <code>Config.DictFemaleAnimationSexFixZ</code> and <code>Config.DictMaleAnimationSexFixZ</code> if the position for animation is flying in the air and fill xxx with your custom sex animation!
+                  <br>Example: 
+                  <br><code>Config.DictMaleAnimationSexFixZ = sexmaledict == 'Your_AnimDictionary_Sex_ForMale' or sexmaledict == 'Your_AnimDictionary_Sex_ForMale2'</code>
+                </li>
+                <li>Max sex animation its depends on how you configure Config.AnimationSex, if index = 5 then the max sex animation its 5 and so on
+                </li>
+              </ul>
+              <pre>
+                <code>Config.AnimationSex = {
+  [1] = {
+      label = 'Sex 1',
+      description = 'This is Decription',
+      maledict = 'misscarsteal2pimpsex',
+      malename = 'pimpsex_punter',
+      femaledict = 'misscarsteal2pimpsex',
+      femalename = 'pimpsex_hooker',
+      bone = 9816,
+      x = 0.0,
+      y = 0.60,
+      z = 0.0,
+      xrot = 120.0,
+      yrot = 0.0,
+      zrot = 180.0,
+  },
+  [2] = {
+      label = 'Your_Name_Sex',
+      description = 'Your_Description_Sex',
+      maledict = 'Your_AnimDictionary_Sex_ForMale',
+      malename = 'Your_AnimName_Sex_ForMale',
+      femaledict = 'Your_AnimDictionary_Sex_ForFemale',
+      femalename = 'Your_AnimName_Sex_ForFemale',
+      bone = 9816,
+      x = 0.05,
+      y = 0.35,
+      z = 0.1,
+      xrot = 120.0,
+      yrot = 0.0,
+      zrot = 180.0,
+  },
+  [3] = {
+      label = 'Your_Name_Sex',
+      description = 'Your_Description_Sex',
+      maledict = 'Your_AnimDictionary_Sex_ForMale',
+      malename = 'Your_AnimName_Sex_ForMale',
+      femaledict = 'Your_AnimDictionary_Sex_ForFemale',
+      femalename = 'Your_AnimName_Sex_ForFemale',
+      bone = 9816,
+      x = 0.015,
+      y = -0.25,
+      z = 0.0,
+      xrot = 0.9,
+      yrot = 0.3,
+      zrot = 0.0,
+  },
+}</code>
+              </pre>
+            </li>
+            <li><strong>I want to add more bed, how to do it?</strong>
+              <br>Take a look example that i give, dont forget add , at the end for adding more bed
+              <pre>
+                <code>Config.Bed = {
+  `v_res_msonbed_s`,
+  `p_lestersbed_s`,
+  `p_mbbed_s`,
+  `p_v_res_tt_bed_s`,
+  `v_res_msonbed_s`,
+  `v_res_mbbed`,
+  `v_res_d_bed`,
+  `v_res_tre_bed1`,
+  `v_res_tre_bed2`,
+  `v_res_tt_bed`,
+  `apa_mp_h_bed_double_09`,
+  `apa_mp_h_yacht_bed_02`,
+  `apa_mp_h_bed_double_08`,
+  `apa_mp_h_bed_with_table_02`,
+  `example_bed`,
+  `example_bed`,
+  `example_bed`,
+  `example_bed`,
+  `example_bed`,
+}</code>
+              </pre>
+            </li>
+            <li><strong>My cloth doesnt change at all when triggered sleep/sex</strong>
+              <br>Make sure you have change this value <code>Config.Clothes = true</code> and <code>Config.Pajama = true</code> in config.lua
+            </li>
+            <li><strong>My cloth change but its in wrong texture</strong>
+              <br>
+              <br><strong>standalone or fivem-appearance</strong>
+              <br><a href="https://docs.fivem.net/natives/?_0xD4F7B05C">Read how this native work</a> and change this on your config.lua
+              <br>Example:
+              <br>1. You want using torso 200 and texture 4
+              <br>2. Then you change this function on config.lua
+              <br><code>SetPedComponentVariation(PlayerPedId(), 11, 109, 1, 0)--torso</code> to <code>SetPedComponentVariation(PlayerPedId(), 11, 200, 4, 0)--torso</code>
+              <pre>
+                <code>function StandaloneFemalePregnantPeds()
+    SetPedComponentVariation(PlayerPedId(), 3, 7, 0, 0)--arms
+    SetPedComponentVariation(PlayerPedId(), 4, 60, 1, 0)--pants
+    SetPedComponentVariation(PlayerPedId(), 6, 16, 0, 0)--shoes
+    SetPedComponentVariation(PlayerPedId(), 11, 109, 1, 0)--torso
+    SetPedComponentVariation(PlayerPedId(), 8, 14, 0, 0)--tshirt
+end
+                
+function StandaloneFemalePeds()
+    SetPedComponentVariation(PlayerPedId(), 3, 7, 0, 0)--arms
+    SetPedComponentVariation(PlayerPedId(), 4, 60, 1, 0)--pants
+    SetPedComponentVariation(PlayerPedId(), 6, 16, 0, 0)--shoes
+    SetPedComponentVariation(PlayerPedId(), 11, 109, 1, 0)--torso
+    SetPedComponentVariation(PlayerPedId(), 8, 14, 0, 0)--tshirt
+end
+                
+function StandaloneMalePeds()
+    SetPedComponentVariation(PlayerPedId(), 3, 6, 0, 0)--arms
+    SetPedComponentVariation(PlayerPedId(), 4, 58, 1, 0)--pants
+    SetPedComponentVariation(PlayerPedId(), 6, 5, 2, 0)--shoes
+    SetPedComponentVariation(PlayerPedId(), 11, 117, 1, 0)--torso
+    SetPedComponentVariation(PlayerPedId(), 8, 15, 0, 0)--tshirt
+end
+                
+function StandaloneNakedFemalePeds()
+    SetPedComponentVariation(PlayerPedId(), 3, 15, 0, 0)--arms
+    SetPedComponentVariation(PlayerPedId(), 4, 15, 0, 0)--pants
+    SetPedComponentVariation(PlayerPedId(), 6, 35, 0, 0)--shoes
+    SetPedComponentVariation(PlayerPedId(), 11, 15, 1, 0)--torso
+    SetPedComponentVariation(PlayerPedId(), 8, 15, 0, 0)--tshirt
+end
+                
+function StandaloneNakedMalePeds()
+    SetPedComponentVariation(PlayerPedId(), 3, 15, 0, 0)--arms
+    SetPedComponentVariation(PlayerPedId(), 4, 61, 0, 0)--pants
+    SetPedComponentVariation(PlayerPedId(), 6, 34, 2, 0)--shoes
+    SetPedComponentVariation(PlayerPedId(), 11, 15, 1, 0)--torso
+    SetPedComponentVariation(PlayerPedId(), 8, 15, 0, 0)--tshirt
+end</code>
+              </pre>
+              <strong>esx_skin</strong>
+              <br>change this value on your config.lua
+              <pre>
+                <code>Config.PajamaOutfit = { --Pajama Outfit (esx_skin and skinchanger)
+  male = {
+      tshirt_1 = 15,  tshirt_2 = 0,
+      torso_1 = 144,   torso_2 = 0,
+      decals_1 = 0,   decals_2 = 0,
+      arms = 6,
+      pants_1 = 65,   pants_2 = 0,
+      shoes_1 = 34,   shoes_2 = 0,
+      helmet_1 = -1,  helmet_2 = 0,
+      chain_1 = 0,    chain_2 = 0,
+      glasses_1 = 0,     glasses_2 = 0
+  },
+                
+  female = {
+      tshirt_1 = 6,  tshirt_2 = 0,
+      torso_1 = 142,   torso_2 = 0,
+      decals_1 = 0,   decals_2 = 0,
+      arms = 6,
+      pants_1 = 67,   pants_2 = 0,
+      shoes_1 = 35,   shoes_2 = 0,
+      helmet_1 = -1,  helmet_2 = 0,
+      chain_1 = 0,    chain_2 = 0,
+      glasses_1 = 5,     glasses_2 = 0
+  }
+}
+                
+Config.NakedOutfit = { --Naked Outfit (esx_skin and skinchanger)
+  male = {
+      tshirt_1 = 15,  tshirt_2 = 0,
+      torso_1 = 15,   torso_2 = 0,
+      decals_1 = 0,   decals_2 = 0,
+      arms = 15,
+      pants_1 = 61,   pants_2 = 0,
+      shoes_1 = 34,   shoes_2 = 0,
+      helmet_1 = -1,  helmet_2 = 0,
+      chain_1 = 0,    chain_2 = 0,
+      glasses_1 = 0,     glasses_2 = 0
+  },
+                
+  female = {
+      tshirt_1 = 15,  tshirt_2 = 0,
+      torso_1 = 15,   torso_2 = 0,
+      decals_1 = 0,   decals_2 = 0,
+      arms = 15,
+      pants_1 = 15,   pants_2 = 0,
+      shoes_1 = 35,   shoes_2 = 0,
+      helmet_1 = -1,  helmet_2 = 0,
+      chain_1 = 0,    chain_2 = 0,
+      glasses_1 = 5,     glasses_2 = 0
+  }
+}
+                
+Config.PregnantOutfit = { --Pregnant Outfit (esx_skin and skinchanger)
+  female = {
+        tshirt_1 = 15,  tshirt_2 = 0,
+        torso_1 = 68,   torso_2 = 0,
+        decals_1 = 0,   decals_2 = 0,
+        arms = 0,
+        pants_1 = 12,   pants_2 = 0,
+        shoes_1 = 16,   shoes_2 = 1,
+        helmet_1 = -1,  helmet_2 = 0,
+        chain_1 = 0,    chain_2 = 0,
+        glasses_1 = 5,     glasses_2 = 0
+    }
+}</code>
+              </pre>
+            </li>
             <li><strong>My cloth doesnt reload after sleep/sex</strong>
-              <script src="cloth.lua"></script>
+              <br>Search this function on config.lua and change them!
+              <pre>
+                <code>function ResetMalePeds() -- search this function on config.lua
+    TriggerServerEvent('qb-clothes:loadPlayerSkin') -- QBCore Cloth
+    TriggerServerEvent('qb-clothing:loadPlayerSkin') -- QBCore Cloth
+
+    TriggerEvent('fivem-appearance:client:reloadSkin') -- fivem-appearance
+
+    ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin) -- esx_skin
+    	TriggerEvent('skinchanger:loadSkin', skin)
+    end)
+
+    -- or your custom skin here
+end
+
+function ResetFemalePeds() -- search this function on config.lua
+    TriggerServerEvent('qb-clothes:loadPlayerSkin') -- QBCore Cloth
+    TriggerServerEvent('qb-clothing:loadPlayerSkin') -- QBCore Cloth
+
+    TriggerEvent('fivem-appearance:client:reloadSkin') -- fivem-appearance
+
+    ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin) -- esx_skin
+      TriggerEvent('skinchanger:loadSkin', skin)
+    end)
+
+    -- or your custom skin here
+end</code>
+              </pre>
+            </li>
+            <li><strong>I want to change the notification, how to do it?</strong>
+              <br>Search this function on config.lua and change them! This function is on client, you if you have notification didnt have export
+              <pre>
+                <code>function ShowNotification(msg)
+  -- example using okok
+  exports['okokNotify']:Alert('Bed', msg, 5000, 'neutral')
+  
+  -- example using nd-notify
+  TriggerEvent('nd-notify:client:sendAlert', { 
+    type = 'primary', -- Types = [primary, success, error, police]
+    text = msg,
+    length = 3000,
+    style = {['background-color'] = '#FFFFFF', ['color'] = '#000000' } -- This is optional
+  })
+end</code>
+              </pre>
+            </li>
+            <li><strong>I want to edit the minigames, how to do it?</strong>
+              <br>Change this value <code>Config.CumDifficulty = {'easy', 'easy', 'medium'}</code> in config.lua
+              <br>This means you have 3 minigames and difficulity of that is easy, easy, medium. (easy, medium, hard)
+            </li>
+            <li><strong>I want to make stumble faster, how to do it?</strong>
+              <br>Change this value <code>Config.AnimMillSecPregnant = math.random(100000, 500000)</code> in config.lua
+              <br>This means stumble animation will triggered between 100000 - 500000, reduce this if you want the stumble faster!
+            </li>
+            <li><strong>I want to use command /sexeverywhere instead using viagra</strong>
+              <br>Change this value <code>Config.ItemViagra = 'viagra'</code> to <code>Config.ItemViagra = false</code> in config.lua
+              <br>And make sure you have command value on <code>Config.CommandSexEverywhere = 'sexeverywhere'</code>
             </li>
           </ol>
         </section>
